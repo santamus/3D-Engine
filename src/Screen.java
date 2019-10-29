@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Screen extends JPanel implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
     static ArrayList<DPolygon> DPolygons = new ArrayList<DPolygon>();
@@ -15,6 +16,16 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
         this.addMouseMotionListener(this);
         setFocusable(true);
 
+        double[] values1 = new double[50];
+        double[] values2 = new double[values1.length];
+        double Size = 1;
+        Random r = new Random();
+        for (int y = 0; y < values1.length/2; y+=1) {
+            for (int x = 0; x < values1.length / 2; x++) {
+                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x], values2[x], values2[x + 1]}, Color.blue));
+                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x], values2[x + 1], values1[x + 1]}, Color.blue));
+            }
+        }
         //cursor off
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         BufferedImage cursorImage = new BufferedImage(1, 1, BufferedImage.TRANSLUCENT);
@@ -40,10 +51,18 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
     @Override
     public void paintComponent(Graphics g)
     {
+
         //Clear screen and draw background color
         g.setColor(Color.gray);
         g.fillRect(0, 0, (int)Main.ScreenSize.getWidth(), (int)Main.ScreenSize.getHeight());
+        Calculator.SetPrederterminedInfo();
+        for(int i = 0; i < DPolygons.size(); i++){
+            DPolygons.get(i).DrawablePolygon.drawPolygon(g);
+        DPolygons.get(i).updatePolygon();}
 
+
+//        for(int i = 0; i < DPolygons.size(); i++)
+//            DPolygons.get(i).updatePolygon();
 
 
         CameraMovement();
