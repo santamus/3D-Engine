@@ -8,7 +8,7 @@
         boolean draw = true;
         double[] CalcPos, newX, newY;
         PolygonObject DrawablePolygon;
-        double AvgDist;
+      //  double AvgDist;
 
         public DPolygon(double[] x, double[] y,  double[] z, Color color)
         {
@@ -35,6 +35,7 @@
                 CalcPos = Calculator.CalculatePositionP(Screen.ViewFrom, x[i], y[i], z[i]);
                 newX[i] = (Main.ScreenSize.getWidth()/2 - Calculator.CalcFocusPos[0]) + CalcPos[0] ;
                 newY[i] = (Main.ScreenSize.getHeight()/2 - Calculator.CalcFocusPos[1]) + CalcPos[1];
+                //t<0 означает что полигон за пределами камеры
                 if(Calculator.t < 0)
                     draw = false;
             }
@@ -43,25 +44,25 @@
 
             DrawablePolygon.draw = draw;
             DrawablePolygon.updatePolygon(newX, newY);
-            AvgDist = GetDist();
+           // AvgDist = GetDist();
         }
 
 
 
-        double GetDist()
-        {
-            double total = 0;
-            for(int i=0; i<x.length; i++)
-                total += GetDistanceToP(i);
-            return total / x.length;
-        }
-
-        double GetDistanceToP(int i)
-        {
-            return Math.sqrt((Screen.ViewFrom[0]-x[i])*(Screen.ViewFrom[0]-x[i]) +
-                    (Screen.ViewFrom[1]-y[i])*(Screen.ViewFrom[1]-y[i]) +
-                    (Screen.ViewFrom[2]-z[i])*(Screen.ViewFrom[2]-z[i]));
-        }
+//        double GetDist()
+//        {
+//            double total = 0;
+//            for(int i=0; i<x.length; i++)
+//                total += GetDistanceToP(i);
+//            return total / x.length;
+//        }
+//
+//        double GetDistanceToP(int i)
+//        {
+//            return Math.sqrt((Screen.ViewFrom[0]-x[i])*(Screen.ViewFrom[0]-x[i]) +
+//                    (Screen.ViewFrom[1]-y[i])*(Screen.ViewFrom[1]-y[i]) +
+//                    (Screen.ViewFrom[2]-z[i])*(Screen.ViewFrom[2]-z[i]));
+//        }
     }
 
 
