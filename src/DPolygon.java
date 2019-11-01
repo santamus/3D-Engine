@@ -77,14 +77,32 @@
             return normal;
         }
         public void setCamLighting(){
-            double dist = Math.abs(GetDistanceToP(0)/(25*Screen.power));
+            double dist = Math.abs(GetDistanceToP(0)/(25*Screen.camPower));
             double lighting;
             if (dist>1)
             lighting = 1/dist;
             else lighting = 1;
-            DrawablePolygon.lighting=lighting;
+            DrawablePolygon.addLighting(lighting);
         }
 
-    }
+        public double setLighting(LightPoint light) {
+            double dist = Math.abs(light.distanceToPoly(this)/(25*Screen.staticPower));
+            double lighting;
+            if (dist>1)
+                lighting = 1/dist;
+            else lighting = 1;
+            return lighting;
+        }
+
+        public void setLight(){
+            double[] lights = new double[Screen.lightPoints.size()];
+            for(int i = 0; i <Screen.lightPoints.size();i++){
+            lights[i]=setLighting(Screen.lightPoints.get(i));}
+           // lights[Screen.lightPoints.size()]=setCamLighting();
+            DrawablePolygon.setLighting(lights);
+            }
+
+        }
+
 
 

@@ -8,8 +8,10 @@ import java.util.Random;
 
 public class Screen extends JPanel implements KeyListener,  MouseMotionListener, MouseWheelListener {
     static ArrayList<DPolygon> DPolygons = new ArrayList<DPolygon>();
+    static ArrayList<LightPoint> lightPoints = new ArrayList<>();
 // нажатые клавиши
     boolean[] Keys = new boolean[4];
+    boolean camLight = false;
     private int[] newOrder;
 
     public Screen() {
@@ -21,8 +23,11 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
 
         double[] values1 = new double[50];
         double[] values2 = new double[values1.length];
-        double Size = 1;
+        double Size = 5;
       //  Random r = new Random();
+
+        lightPoints.add(new LightPoint(0,0,5));
+        lightPoints.add(new LightPoint(75,75,5));
 
         for (int y = 0; y < values1.length/2; y+=1) {
             for (int x = 0; x < values1.length / 2; x++) {
@@ -81,7 +86,8 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
     //aim
     double aimSight = 4;
 
-    static double power=0.5;
+    static double staticPower=0.5,camPower=0.5;
+
     double movementSpeed=0.5;
 
     //mouse config
@@ -91,15 +97,21 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
     public void paintComponent(Graphics g)
     {
 
-     //   LightPoint light = new LightPoint(ViewFrom[0],ViewFrom[1],ViewFrom[2]);
+
         //Clear screen and draw background color
         g.setColor(Color.gray);
         g.fillRect(0, 0, (int)Main.ScreenSize.getWidth(), (int)Main.ScreenSize.getHeight());
         Calculator.SetPrederterminedInfo();
         setOrder();
 
-        for(int i = 0; i < DPolygons.size(); i++){
 
+
+        for(int i = 0; i < DPolygons.size(); i++){
+            for(int j = 0; j < lightPoints.size(); j++){
+                DPolygons.get(newOrder[i]).setLight();}
+     //       DPolygons.get(newOrder[i]).setLighting(lights.get(i));
+//            DPolygons.get(newOrder[i]).setLighting(light);
+            if (camLight)
             DPolygons.get(newOrder[i]).setCamLighting();
             DPolygons.get(newOrder[i]).DrawablePolygon.drawPolygon(g);
         DPolygons.get(newOrder[i]).updatePolygon();}
@@ -240,6 +252,8 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
             Keys[2] = true;
         if(e.getKeyCode() == KeyEvent.VK_D)
             Keys[3] = true;
+        if(e.getKeyCode() == KeyEvent.VK_E)
+            camLight=!camLight;
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
             System.exit(0);;
     }
@@ -255,26 +269,34 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
         if(e.getKeyCode() == KeyEvent.VK_D)
             Keys[3] = false;
 
+
     }
 
     public void mouseWheelMoved(MouseWheelEvent e) {
-double rot = e.getWheelRotation();
-        System.out.println(rot);
-        if(rot<0)
-        {
+        double rot = e.getWheelRotation();
+        if (camLight) {
+            if (rot < 0) {
 
-            if (power<=1)
-                power -= rot/20;
+                if (camPower <= 1)
+                    camPower -= rot / 20;
+            } else {
+
+                if (camPower > 0.02)
+                    camPower -= rot / 20;
+            }
+        } else {
+            if (rot < 0) {
+
+                if (staticPower <= 1)
+                    staticPower -= rot / 20;
+            } else {
+
+                if (staticPower > 0.02)
+                    staticPower -= rot / 20;
+            }
+
         }
-        else
-        {
-
-            if (power>0.02)
-                power -= rot/20;
-        }
-
     }
-
 
     @Override
     public void mouseDragged(MouseEvent e) {

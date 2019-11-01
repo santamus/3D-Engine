@@ -49,6 +49,24 @@ public class PolygonObject {
 
 		}
 	}
-	
+
+
+	public void setLighting(double[] lighting) {
+
+		this.lighting=0;
+		for (int i =0;i<lighting.length;i++){
+			this.lighting+=lighting[i];
+
+		}
+		if(this.lighting>1) this.lighting=1;
+	}
+	public void addLighting(double lighting) {
+
+
+			this.lighting+=lighting;
+
+
+		if(this.lighting>1) this.lighting=1;
+	}
 
 }
