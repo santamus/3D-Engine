@@ -8,7 +8,7 @@
         boolean draw = true;
         double[] CalcPos, newX, newY;
         PolygonObject DrawablePolygon;
-      //  double AvgDist;
+        double AvgDist;
 
         public DPolygon(double[] x, double[] y,  double[] z, Color color)
         {
@@ -44,25 +44,25 @@
 
             DrawablePolygon.draw = draw;
             DrawablePolygon.updatePolygon(newX, newY);
-           // AvgDist = GetDist();
+           AvgDist = GetAvgDist();
         }
 
 
 
-//        double GetDist()
-//        {
-//            double total = 0;
-//            for(int i=0; i<x.length; i++)
-//                total += GetDistanceToP(i);
-//            return total / x.length;
-//        }
-//
-//        double GetDistanceToP(int i)
-//        {
-//            return Math.sqrt((Screen.ViewFrom[0]-x[i])*(Screen.ViewFrom[0]-x[i]) +
-//                    (Screen.ViewFrom[1]-y[i])*(Screen.ViewFrom[1]-y[i]) +
-//                    (Screen.ViewFrom[2]-z[i])*(Screen.ViewFrom[2]-z[i]));
-//        }
+        double GetAvgDist()
+        {
+            double total = 0;
+            for(int i=0; i<x.length; i++)
+                total += GetDistanceToP(i);
+            return total / x.length;
+        }
+
+        double GetDistanceToP(int i)
+        {
+            return Math.sqrt((Screen.ViewFrom[0]-x[i])*(Screen.ViewFrom[0]-x[i]) +
+                    (Screen.ViewFrom[1]-y[i])*(Screen.ViewFrom[1]-y[i]) +
+                    (Screen.ViewFrom[2]-z[i])*(Screen.ViewFrom[2]-z[i]));
+        }
     }
 
 

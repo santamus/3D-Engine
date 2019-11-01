@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f08f067a-b688-4353-9a13-fbade0120630" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Calculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/Calculator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/Screen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DPolygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Screen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

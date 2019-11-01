@@ -9,6 +9,7 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
     static ArrayList<DPolygon> DPolygons = new ArrayList<DPolygon>();
 // нажатые клавиши
     boolean[] Keys = new boolean[4];
+    private int[] newOrder;
 
     public Screen() {
      //   this.setBackground(Color.PINK);
@@ -16,7 +17,7 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
         this.addMouseMotionListener(this);
         setFocusable(true);
 
-        double[] values1 = new double[50];
+        double[] values1 = new double[25];
         double[] values2 = new double[values1.length];
         double Size = 1;
         Random r = new Random();
@@ -24,6 +25,8 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
             for (int x = 0; x < values1.length / 2; x++) {
                 Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x], values2[x], values2[x + 1]}, Color.blue));
                 Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x], values2[x + 1], values1[x + 1]}, Color.blue));
+                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x]+10, values2[x]+10, values2[x + 1]+10}, Color.blue));
+                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x]+10, values2[x + 1]+10, values1[x + 1]+10}, Color.blue));
             }
         }
         //cursor off
@@ -34,7 +37,35 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
 
 
     }
+//Ближайшие полигоны рисуются последними
+    void setOrder()
+    {
 
+        double[] k = new double[DPolygons.size()];
+        newOrder = new int[DPolygons.size()];
+
+        for(int i=0; i<DPolygons.size(); i++)
+        {
+            k[i] = DPolygons.get(i).AvgDist;
+            newOrder[i] = i;
+        }
+
+        double temp;
+        int tempr;
+        for (int a = 0; a < k.length-1; a++)
+            for (int b = 0; b < k.length-1; b++)
+                if(k[b] < k[b + 1])
+                {
+                    temp = k[b];
+                    tempr = newOrder[b];
+                    newOrder[b] = newOrder[b + 1];
+                    k[b] = k[b + 1];
+
+                    newOrder[b + 1] = tempr;
+                    k[b + 1] = temp;
+                }
+    }
+    
     static double[] ViewFrom = new double[] { 20, 20, 20},
             ViewTo = new double[] {0, 0, 1};
 
@@ -56,13 +87,15 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
         g.setColor(Color.gray);
         g.fillRect(0, 0, (int)Main.ScreenSize.getWidth(), (int)Main.ScreenSize.getHeight());
         Calculator.SetPrederterminedInfo();
+        setOrder();
         for(int i = 0; i < DPolygons.size(); i++){
-            DPolygons.get(i).DrawablePolygon.drawPolygon(g);
-        DPolygons.get(i).updatePolygon();}
+            DPolygons.get(newOrder[i]).DrawablePolygon.drawPolygon(g);
+        DPolygons.get(newOrder[i]).updatePolygon();}
 
 
 //        for(int i = 0; i < DPolygons.size(); i++)
 //            DPolygons.get(i).updatePolygon();
+
 
 
         CameraMovement();
