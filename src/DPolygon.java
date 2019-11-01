@@ -9,6 +9,7 @@
         double[] CalcPos, newX, newY;
         PolygonObject DrawablePolygon;
         double AvgDist;
+        Vector normal,negaNormal;
 
         public DPolygon(double[] x, double[] y,  double[] z, Color color)
         {
@@ -17,6 +18,13 @@
             this.z = z;
             this.color = color;
 
+            Vector v1 = new Vector(x[0],y[0],z[0]);
+            Vector v2 = new Vector(x[x.length-1],y[y.length-1],z[z.length-1]);
+            normal = v1.CrossProduct(v2);
+            negaNormal=normal;
+            negaNormal.x*=-1;
+            negaNormal.y*=-1;
+            negaNormal.z*=-1;
             createPolygon();
         }
 
@@ -63,6 +71,20 @@
                     (Screen.ViewFrom[1]-y[i])*(Screen.ViewFrom[1]-y[i]) +
                     (Screen.ViewFrom[2]-z[i])*(Screen.ViewFrom[2]-z[i]));
         }
+
+        Vector getNormal(){
+
+            return normal;
+        }
+        public void setCamLighting(){
+            double dist = Math.abs(GetDistanceToP(0)/(25*Screen.power));
+            double lighting;
+            if (dist>1)
+            lighting = 1/dist;
+            else lighting = 1;
+            DrawablePolygon.lighting=lighting;
+        }
+
     }
 
 

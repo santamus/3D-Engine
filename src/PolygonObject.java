@@ -7,7 +7,7 @@ public class PolygonObject {
 
 	boolean draw = true;
 	//уровень светимости от 0 до 1
-	double lighting = 1;
+	double lighting = 0;
 	
 	public PolygonObject(double[] x, double[] y, Color c)
 	{
@@ -33,6 +33,7 @@ public class PolygonObject {
 	
 	void drawPolygon(Graphics g)
 	{
+
 		if(draw)
 		{
 			g.setColor(new Color((int)(c.getRed() * lighting), (int)(c.getGreen() * lighting), (int)(c.getBlue() * lighting)));

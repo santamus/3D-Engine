@@ -14,6 +14,22 @@ public class Vector {
         }
 
     }
+    //Задание 2 точками
+    public Vector(double x1, double y1, double z1,double x2, double y2, double z2)
+    {
+        x=x2-x1;
+        y=y2-y1;
+        z=z2-z1;
+        double Length = Math.sqrt(x*x + y*y + z*z);
+
+        if(Length>0)
+        {
+            this.x = x/Length;
+            this.y = y/Length;
+            this.z = z/Length;
+        }
+
+    }
 //Векторное произведение
 
     Vector CrossProduct(Vector V)

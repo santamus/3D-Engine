@@ -3,9 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
 import java.util.Random;
 
-public class Screen extends JPanel implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
+public class Screen extends JPanel implements KeyListener,  MouseMotionListener, MouseWheelListener {
     static ArrayList<DPolygon> DPolygons = new ArrayList<DPolygon>();
 // нажатые клавиши
     boolean[] Keys = new boolean[4];
@@ -15,20 +16,26 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
      //   this.setBackground(Color.PINK);
         this.addKeyListener(this);
         this.addMouseMotionListener(this);
+        this.addMouseWheelListener(this);
         setFocusable(true);
 
-        double[] values1 = new double[25];
+        double[] values1 = new double[50];
         double[] values2 = new double[values1.length];
         double Size = 1;
-        Random r = new Random();
+      //  Random r = new Random();
+
         for (int y = 0; y < values1.length/2; y+=1) {
             for (int x = 0; x < values1.length / 2; x++) {
                 Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x], values2[x], values2[x + 1]}, Color.blue));
                 Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x], values2[x + 1], values1[x + 1]}, Color.blue));
-                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x]+10, values2[x]+10, values2[x + 1]+10}, Color.blue));
-                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x]+10, values2[x + 1]+10, values1[x + 1]+10}, Color.blue));
+//                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x]-0.01, values2[x]-0.01, values2[x + 1]-0.01}, Color.red));
+//                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x]-0.01, values2[x + 1]-0.01, values1[x + 1]-0.01}, Color.red));
+//                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x]+10, values2[x]+10, values2[x + 1]+10}, Color.blue));
+//                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x]+10, values2[x + 1]+10, values1[x + 1]+10}, Color.blue));
             }
         }
+
+
         //cursor off
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         BufferedImage cursorImage = new BufferedImage(1, 1, BufferedImage.TRANSLUCENT);
@@ -74,6 +81,7 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
     //aim
     double aimSight = 4;
 
+    static double power=0.5;
     double movementSpeed=0.5;
 
     //mouse config
@@ -83,12 +91,16 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
     public void paintComponent(Graphics g)
     {
 
+     //   LightPoint light = new LightPoint(ViewFrom[0],ViewFrom[1],ViewFrom[2]);
         //Clear screen and draw background color
         g.setColor(Color.gray);
         g.fillRect(0, 0, (int)Main.ScreenSize.getWidth(), (int)Main.ScreenSize.getHeight());
         Calculator.SetPrederterminedInfo();
         setOrder();
+
         for(int i = 0; i < DPolygons.size(); i++){
+
+            DPolygons.get(newOrder[i]).setCamLighting();
             DPolygons.get(newOrder[i]).DrawablePolygon.drawPolygon(g);
         DPolygons.get(newOrder[i]).updatePolygon();}
 
@@ -245,30 +257,24 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
 
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseWheelMoved(MouseWheelEvent e) {
+double rot = e.getWheelRotation();
+        System.out.println(rot);
+        if(rot<0)
+        {
+
+            if (power<=1)
+                power -= rot/20;
+        }
+        else
+        {
+
+            if (power>0.02)
+                power -= rot/20;
+        }
 
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -305,10 +311,7 @@ public class Screen extends JPanel implements KeyListener, MouseListener, MouseM
         ViewTo[2] = ViewFrom[2] + vertLook;
     }
 
-    @Override
-    public void mouseWheelMoved(MouseWheelEvent e) {
 
-    }
 
 
     void CenterMouse()
