@@ -109,10 +109,8 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
         for(int i = 0; i < DPolygons.size(); i++){
             for(int j = 0; j < lightPoints.size(); j++){
                 DPolygons.get(newOrder[i]).setLight();}
-     //       DPolygons.get(newOrder[i]).setLighting(lights.get(i));
-//            DPolygons.get(newOrder[i]).setLighting(light);
             if (camLight)
-            DPolygons.get(newOrder[i]).setCamLighting();
+                DPolygons.get(newOrder[i]).setCamLighting();
             DPolygons.get(newOrder[i]).DrawablePolygon.drawPolygon(g);
         DPolygons.get(newOrder[i]).updatePolygon();}
 

@@ -72,10 +72,7 @@
                     (Screen.ViewFrom[2]-z[i])*(Screen.ViewFrom[2]-z[i]));
         }
 
-        Vector getNormal(){
 
-            return normal;
-        }
         public void setCamLighting(){
             double dist = Math.abs(GetDistanceToP(0)/(25*Screen.camPower));
             double lighting;
