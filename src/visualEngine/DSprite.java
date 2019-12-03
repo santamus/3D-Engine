@@ -1,8 +1,9 @@
-import java.awt.*;
+package visualEngine;
+
 import java.awt.image.BufferedImage;
 
 public class DSprite {
-    double x,y,z;
+ public   double x,y,z;
     double size=1;
     double[] pos;
     boolean draw = true;
@@ -22,7 +23,12 @@ public class DSprite {
         drawableSprite = new Sprite(x,y,img);
     }
 
-    void updateSprite(){
+   public void move(double x, double y,double z){
+       this.x+=x;
+       this.y+=y;
+       this.z+=z;
+    }
+    public void updateSprite(){
         draw = true;
         pos = Calculator.CalculatePositionP(Screen.ViewFrom, x, y, z);
         double  newX = (Main.ScreenSize.getWidth()/2 - Calculator.CalcFocusPos[0]) + pos[0] ;

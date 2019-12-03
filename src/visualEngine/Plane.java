@@ -1,3 +1,5 @@
+package visualEngine;
+
 public class Plane {
 	//Задается 2умя векторами + вектор нормали
 	Vector V1, V2, NV;

@@ -1,3 +1,5 @@
+package visualEngine;
+
 public class LightPoint {
     double x,y,z;
     LightPoint(double x,double y,double z){

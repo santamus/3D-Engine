@@ -1,3 +1,5 @@
+package visualEngine;
+
 public class Calculator {
 	static double t = 0,zoom =1000; //zoom - аналогичен параметру "угол обзора"
 	static Vector W1, W2, ViewVector, RotationVector, DirectionVector, PlaneVector1, PlaneVector2;

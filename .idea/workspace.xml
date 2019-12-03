@@ -2,13 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f08f067a-b688-4353-9a13-fbade0120630" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DSprite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/physic/FixedObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/Screen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DPolygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Calculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/DSprite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/LightPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Plane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/PolygonObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Screen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Sprite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Vector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/DPolygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/DSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LightPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/LightPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PolygonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/PolygonObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Vector.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,14 +52,14 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sus\Documents\NetBeansProjects\3dTask\src" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sus\Documents\NetBeansProjects\3dTask\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -61,7 +76,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="visualEngine.Main" />
       <module name="3dTask" />
       <method v="2">
         <option name="Make" enabled="true" />

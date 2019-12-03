@@ -1,5 +1,6 @@
+package visualEngine;
 
-    import java.awt.Color;
+import java.awt.Color;
 
     public class DPolygon {
         Color color;
@@ -93,7 +94,7 @@
             double[] lights = new double[Screen.lightPoints.size()];
             for(int i = 0; i <Screen.lightPoints.size();i++){
             lights[i]=setLighting(Screen.lightPoints.get(i));}
-           // lights[Screen.lightPoints.size()]=setCamLighting();
+           // lights[visualEngine.Screen.lightPoints.size()]=setCamLighting();
             DrawablePolygon.setLighting(lights);
             }
 
