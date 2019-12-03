@@ -9,7 +9,7 @@
         double[] CalcPos, newX, newY;
         PolygonObject DrawablePolygon;
         double AvgDist;
-        Vector normal,negaNormal;
+        Vector normal;
 
         public DPolygon(double[] x, double[] y,  double[] z, Color color)
         {
@@ -21,10 +21,8 @@
             Vector v1 = new Vector(x[0],y[0],z[0]);
             Vector v2 = new Vector(x[x.length-1],y[y.length-1],z[z.length-1]);
             normal = v1.CrossProduct(v2);
-            negaNormal=normal;
-            negaNormal.x*=-1;
-            negaNormal.y*=-1;
-            negaNormal.z*=-1;
+
+
             createPolygon();
         }
 

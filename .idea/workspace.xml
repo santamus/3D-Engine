@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f08f067a-b688-4353-9a13-fbade0120630" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/DSprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/Screen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DPolygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PolygonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PolygonObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Screen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,6 +37,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sus\Documents\NetBeansProjects\3dTask\src" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>

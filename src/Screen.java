@@ -1,13 +1,17 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.Random;
 
 public class Screen extends JPanel implements KeyListener,  MouseMotionListener, MouseWheelListener {
     static ArrayList<DPolygon> DPolygons = new ArrayList<DPolygon>();
+    static ArrayList<DSprite> dSprites = new ArrayList<>();
     static ArrayList<LightPoint> lightPoints = new ArrayList<>();
 // нажатые клавиши
     boolean[] Keys = new boolean[4];
@@ -26,8 +30,8 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
         double Size = 5;
       //  Random r = new Random();
 
-        lightPoints.add(new LightPoint(0,0,5));
-        lightPoints.add(new LightPoint(75,75,5));
+//        lightPoints.add(new LightPoint(0,0,5));
+      lightPoints.add(new LightPoint(75,75,5));
 
         for (int y = 0; y < values1.length/2; y+=1) {
             for (int x = 0; x < values1.length / 2; x++) {
@@ -37,7 +41,13 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
 //                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x]-0.01, values2[x + 1]-0.01, values1[x + 1]-0.01}, Color.red));
 //                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), Size + (Size * (y + 1))}, new double[]{values1[x]+10, values2[x]+10, values2[x + 1]+10}, Color.blue));
 //                Screen.DPolygons.add(new DPolygon(new double[]{(Size * x), Size + (Size * x), Size + (Size * x)}, new double[]{(Size * (y + 1)), Size + (Size * (y + 1)), (Size * (y + 1))}, new double[]{values1[x]+10, values2[x + 1]+10, values1[x + 1]+10}, Color.blue));
-            }
+            } }
+
+
+        try {
+            dSprites.add(new DSprite(20,20,20, ImageIO.read(new File("src/s.png"))));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 
@@ -88,7 +98,7 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
 
     static double staticPower=0.5,camPower=0.5;
 
-    double movementSpeed=0.5;
+    double movementSpeed=0.1;
 
     //mouse config
     static double mouseX = 0, mouseY = 0,vertLook = -0.9, horLook = 0,horRotSpeed = 900, vertRotSpeed = 2200;
@@ -113,10 +123,15 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
                 DPolygons.get(newOrder[i]).setCamLighting();
             DPolygons.get(newOrder[i]).DrawablePolygon.drawPolygon(g);
         DPolygons.get(newOrder[i]).updatePolygon();}
+        for (int i =0;i<dSprites.size();i++){
+            dSprites.get(i).drawableSprite.drawSprite(g);
+            dSprites.get(i).updateSprite();
+        }
 
 
 //        for(int i = 0; i < DPolygons.size(); i++)
 //            DPolygons.get(i).updatePolygon();
+
 
 
 
