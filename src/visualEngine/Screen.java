@@ -20,10 +20,16 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
 
 // нажатые клавиши
     boolean[] Keys = new boolean[4];
-    boolean camLight = false;
+    boolean camLight = true;
     private int[] newOrder;
+
+    Image sprite1=ImageIO.read(new File("src/raketa.png"));
+    Image sprite2=ImageIO.read(new File("src/raketa22.png"));
     boolean camRocketMod = false;
-    public Screen() {
+
+    private double gravity = 0;
+
+    public Screen() throws IOException {
      //   this.setBackground(Color.PINK);
         this.addKeyListener(this);
         this.addMouseMotionListener(this);
@@ -37,7 +43,7 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
       //  Random r = new Random();
 
 //        lightPoints.add(new visualEngine.LightPoint(0,0,5));
-      lightPoints.add(new LightPoint(75,75,5));
+   //   lightPoints.add(new LightPoint(75,75,5));
 
         for (int y = 0; y < values1.length/2; y+=1) {
             for (int x = 0; x < values1.length / 2; x++) {
@@ -99,8 +105,8 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
                 }
     }
     
-    static double[] ViewFrom = new double[] { 50, 50, 20},
-            ViewTo = new double[] {0, 0, 1};
+    static double[] ViewFrom = new double[] { 200, 200, 50},
+            ViewTo = new double[] {0, 0, -1};
 
     //FPS
     double drawFPS = 0, MaxFPS = 1000, SleepTime = 1000.0/MaxFPS, LastRefresh = 0, StartTime = System.currentTimeMillis(), LastFPSCheck = 0, Checks = 0;
@@ -112,7 +118,7 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
     double movementSpeed=0.1;
 
     //mouse config
-    static double mouseX = 0, mouseY = 0,vertLook = -0.9, horLook = 0,horRotSpeed = 900, vertRotSpeed = 2200;
+    static double mouseX = 0, mouseY = 0,vertLook = -0.9, horLook = 0,horRotSpeed = 4000, vertRotSpeed = 8000;
 
     @Override
     public void paintComponent(Graphics g)
@@ -142,9 +148,18 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
         for (int i =0;i<objects.size();i++){
             objects.get(i).sprite.drawableSprite.drawSprite(g);
             objects.get(i).update();
-           if (objects.get(i).checkCollision(ViewFrom[0],ViewFrom[1],ViewFrom[2])){
-               g.drawString("COLISION!",40,120);
+           if (objects.get(i).checkCollision(ViewFrom[0],ViewFrom[1],ViewFrom[2])||ViewFrom[2]<=0){
+             changeCamMode();
            }
+        }
+        if(camRocketMod){
+
+                setCamImg(sprite1,g);
+
+        } else {
+
+                setCamImg(sprite2,g);
+
         }
 
 
@@ -200,38 +215,26 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
         Vector ViewVector = new Vector(ViewTo[0] - ViewFrom[0], ViewTo[1] - ViewFrom[1], ViewTo[2] - ViewFrom[2]);
         double xMove = 0, yMove = 0, zMove = 0;
         Vector VerticalVector = new Vector (0, 0, 1);
-        Vector SideViewVector = ViewVector.CrossProduct(VerticalVector);
+       // Vector SideViewVector = ViewVector.CrossProduct(VerticalVector);
 
-        if(Keys[0])
-        {
-            xMove += ViewVector.x ;
-            yMove += ViewVector.y ;
-            zMove += ViewVector.z ;
+        if (camRocketMod) {
+            xMove += ViewVector.x;
+            yMove += ViewVector.y;
+            zMove += ViewVector.z;
+
+            if (movementSpeed<0.2)
+                movementSpeed+=0.0001;
+
+
+            if (Keys[2]) {
+                if (movementSpeed>0.05)
+                    movementSpeed-=0.0002;
+            }
         }
 
-        if(Keys[2])
-        {
-            xMove -= ViewVector.x ;
-            yMove -= ViewVector.y ;
-            zMove -= ViewVector.z ;
-        }
-
-        if(Keys[1])
-        {
-            xMove += SideViewVector.x ;
-            yMove += SideViewVector.y ;
-            zMove += SideViewVector.z ;
-        }
-
-        if(Keys[3])
-        {
-            xMove -= SideViewVector.x ;
-            yMove -= SideViewVector.y ;
-            zMove -= SideViewVector.z ;
-        }
 
         Vector MoveVector = new Vector(xMove, yMove, zMove);
-        MoveTo(ViewFrom[0] + MoveVector.x * movementSpeed, ViewFrom[1] + MoveVector.y * movementSpeed, ViewFrom[2] + MoveVector.z * movementSpeed);
+        MoveTo(ViewFrom[0] + MoveVector.x * movementSpeed, ViewFrom[1] + MoveVector.y * movementSpeed, ViewFrom[2] + MoveVector.z * movementSpeed-gravity);
     }
 
     void drawMouseAim(Graphics g)
@@ -253,6 +256,19 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
         ViewTo[2] = ViewFrom[2] + vertLook;
     }
 
+    void changeCamMode(){
+        if (camRocketMod){
+            camRocketMod=false;
+            gravity=0;
+            ViewFrom[0]=200;
+            ViewFrom[1]=200;
+            ViewFrom[2]=50;
+        }
+        else{
+            camRocketMod=true;
+            gravity=0.07;
+        }
+    }
 
 
 
@@ -277,16 +293,19 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_W)
-            Keys[0] = true;
-        if(e.getKeyCode() == KeyEvent.VK_A)
-            Keys[1] = true;
+//        if(e.getKeyCode() == KeyEvent.VK_W)
+//            Keys[0] = true;
+//        if(e.getKeyCode() == KeyEvent.VK_A)
+//            Keys[1] = true;
         if(e.getKeyCode() == KeyEvent.VK_S)
             Keys[2] = true;
-        if(e.getKeyCode() == KeyEvent.VK_D)
-            Keys[3] = true;
-        if(e.getKeyCode() == KeyEvent.VK_E)
-            camLight=!camLight;
+//        if(e.getKeyCode() == KeyEvent.VK_D)
+//            Keys[3] = true;
+//        if(e.getKeyCode() == KeyEvent.VK_E)
+//            camLight=!camLight;
+        if (e.getKeyCode()==KeyEvent.VK_SPACE){
+            changeCamMode();
+        }
 //        if(e.getKeyCode() == KeyEvent.VK_F){
 //            try {
 //                ArrayList<double[]> arr = new ArrayList<>();
@@ -362,8 +381,8 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
 
         //выравнивающий плавность перерасчет
         difY *= 6 - Math.abs(vertLook) * 5;
-        vertLook -= difY  / vertRotSpeed;
-        horLook += difX / horRotSpeed;
+        vertLook -= difY  / (2*vertRotSpeed);
+        horLook += difX / (2*horRotSpeed);
 
         if(vertLook>0.999)
             vertLook = 0.999;
@@ -391,5 +410,8 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
     }
 
 
+    void setCamImg(Image img,Graphics g){
+        g.drawImage(img,0,0,this.getWidth(),this.getHeight(),null);
+    }
 
 }

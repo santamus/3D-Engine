@@ -46,4 +46,5 @@ public class DSprite {
         if (dist==0) dist=0.0001;
         return  10/dist;
     }
+
 }

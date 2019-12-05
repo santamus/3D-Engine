@@ -45,8 +45,8 @@ public class PolygonObject {
 				g.fillPolygon(P);
 
 			    //обводка
-				g.setColor(new Color(0, 0, 0));
-				g.drawPolygon(P);
+//				g.setColor(new Color(0, 0, 0));
+//				g.drawPolygon(P);
 
 
 

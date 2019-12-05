@@ -3,11 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f08f067a-b688-4353-9a13-fbade0120630" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/physic/FixedObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/physic/FixedObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/visualEngine/DSprite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/visualEngine/DSprite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/visualEngine/DPolygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/visualEngine/DPolygon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/visualEngine/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/visualEngine/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/visualEngine/PolygonObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/visualEngine/PolygonObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3dTask/visualEngine/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/visualEngine/Screen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/physic/FixedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/physic/FixedObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualEngine/DPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/DPolygon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/visualEngine/DSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/DSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualEngine/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualEngine/PolygonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/PolygonObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/visualEngine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Screen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

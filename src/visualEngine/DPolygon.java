@@ -78,7 +78,7 @@ import java.awt.Color;
             if (dist>1)
             lighting = 1/dist;
             else lighting = 1;
-            DrawablePolygon.addLighting(lighting);
+            DrawablePolygon.setLighting(new double[]{lighting});
         }
 
         public double setLighting(LightPoint light) {
