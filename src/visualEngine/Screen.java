@@ -22,7 +22,7 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
     boolean[] Keys = new boolean[4];
     boolean camLight = false;
     private int[] newOrder;
-
+    boolean camRocketMod = false;
     public Screen() {
      //   this.setBackground(Color.PINK);
         this.addKeyListener(this);
@@ -52,11 +52,11 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
 
         try {
         //    dSprites.add(new DSprite(20,20,20, ImageIO.read(new File("src/s.png"))));
-            FixedObject obj = new FixedObject(ImageIO.read(new File("src/s.png")),25,20,20);
-            obj.addPoint(0,0,20);
-//            obj.addPoint(50,50,20);
-//            obj.addPoint(50,25,20);
-   //         objects.add(obj);
+            FixedObject obj = new FixedObject(ImageIO.read(new File("src/s.png")),20,20,20);
+            obj.addPoint(20,50,20);
+            obj.addPoint(20,35,30);
+
+            objects.add(obj);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,7 +99,7 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
                 }
     }
     
-    static double[] ViewFrom = new double[] { 20, 20, 20},
+    static double[] ViewFrom = new double[] { 50, 50, 20},
             ViewTo = new double[] {0, 0, 1};
 
     //FPS
@@ -142,11 +142,15 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
         for (int i =0;i<objects.size();i++){
             objects.get(i).sprite.drawableSprite.drawSprite(g);
             objects.get(i).update();
+           if (objects.get(i).checkCollision(ViewFrom[0],ViewFrom[1],ViewFrom[2])){
+               g.drawString("COLISION!",40,120);
+           }
         }
 
 
 //        for(int i = 0; i < DPolygons.size(); i++)
 //            DPolygons.get(i).updatePolygon();
+
 
 
 
@@ -283,17 +287,17 @@ public class Screen extends JPanel implements KeyListener,  MouseMotionListener,
             Keys[3] = true;
         if(e.getKeyCode() == KeyEvent.VK_E)
             camLight=!camLight;
-        if(e.getKeyCode() == KeyEvent.VK_F){
-            try {
-                ArrayList<double[]> arr = new ArrayList<>();
-                arr.add(new double[]{ViewFrom[0],ViewFrom[1],ViewFrom[2]});
-                arr.add(new double[]{1000*(ViewTo[0]-ViewFrom[0]),1000*(ViewTo[1]-ViewFrom[1]),1000*(ViewTo[2]-ViewFrom[2])});
-               // FixedObject obj = new FixedObject(ImageIO.read(new File("src/s.png")),arr);
-                objects.add(new FixedObject(ImageIO.read(new File("src/s.png")),arr));
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
+//        if(e.getKeyCode() == KeyEvent.VK_F){
+//            try {
+//                ArrayList<double[]> arr = new ArrayList<>();
+//                arr.add(new double[]{ViewFrom[0],ViewFrom[1],ViewFrom[2]});
+//                arr.add(new double[]{1000*(ViewTo[0]-ViewFrom[0]),1000*(ViewTo[1]-ViewFrom[1]),1000*(ViewTo[2]-ViewFrom[2])});
+//               // FixedObject obj = new FixedObject(ImageIO.read(new File("src/s.png")),arr);
+//                objects.add(new FixedObject(ImageIO.read(new File("src/s.png")),arr));
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
+//        }
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
             System.exit(0);
     }

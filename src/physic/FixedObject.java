@@ -10,6 +10,7 @@ public class FixedObject {
     ArrayList<double[]> points = new ArrayList<>();
     double[] curPoint,nextPoint;
     int npIndex;
+    double collizionRadius = 3;
     double speed=2;
     public FixedObject(BufferedImage img,ArrayList<double[]> p){
         sprite = new DSprite(p.get(0)[0],p.get(0)[1],p.get(0)[2],img);
@@ -62,5 +63,11 @@ public class FixedObject {
         }
 
         sprite.updateSprite();
+    }
+
+    public boolean  checkCollision(double x, double y,double z){
+        return ((sprite.x-collizionRadius)<x&&(sprite.x+collizionRadius)>x
+                &&(sprite.y-collizionRadius)<y&&(sprite.y+collizionRadius)>y
+                &&(sprite.z-collizionRadius)<z&&(sprite.z+collizionRadius)>z);
     }
 }

@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class DSprite {
  public   double x,y,z;
-    double size=1;
+
     double[] pos;
     boolean draw = true;
     Sprite drawableSprite;

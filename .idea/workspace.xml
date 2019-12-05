@@ -2,28 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f08f067a-b688-4353-9a13-fbade0120630" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/physic/FixedObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/DPolygon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/DSprite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/LightPoint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Plane.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/PolygonObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Screen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Sprite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3dTask/Vector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/DPolygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/DSprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LightPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/LightPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PolygonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/PolygonObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/physic/FixedObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/physic/FixedObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/visualEngine/DSprite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/visualEngine/DSprite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3dTask/visualEngine/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3dTask/visualEngine/Screen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/physic/FixedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/physic/FixedObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualEngine/DSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/DSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualEngine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualEngine/Screen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
